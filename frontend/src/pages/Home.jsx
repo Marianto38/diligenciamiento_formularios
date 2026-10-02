@@ -45,6 +45,13 @@ const BUILDINGS = [
       { id: 'orientation', label: 'Owners Orientation Package', available: true },
     ],
   },
+  {
+    id: 'nexo',
+    name: 'Nexo Residences',
+    forms: [
+      { id: 'orientation', label: 'Owner Orientation Packet', available: true },
+    ],
+  },
 ]
 
 export default function Home({ onNavigate }) {

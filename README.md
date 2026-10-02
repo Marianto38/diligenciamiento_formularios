@@ -10,6 +10,7 @@ Aplicación web para generar automáticamente formularios en PDF para múltiples
 | The Club | House Keeping Application | ✅ Disponible |
 | 501 First | Owners Orientation Package | — En desarrollo |
 | District 225 | Owners Orientation Package | — En desarrollo |
+| Nexo Residences | Owner Orientation Packet | ✅ Disponible |
 
 ---
 
