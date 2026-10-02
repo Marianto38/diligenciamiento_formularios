@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Node / frontend build
+frontend/node_modules/
+frontend/dist/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Debug / scratch files from development
+page_*.png
+tmp_*.png
+test_*.py
+test_form*.pdf
+test_filled.pdf
+t.pdf
+t.png
+Nueva carpeta/
