@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../apiBase'
 
 export default function NomadForm({ building, form, onBack }) {
   const [data, setData] = useState({
@@ -28,7 +29,7 @@ export default function NomadForm({ building, form, onBack }) {
     setStatus({ type: 'loading', msg: 'Generando formularios…' })
 
     try {
-      const res = await fetch('/api/generar-nomad', {
+      const res = await fetch(`${API_BASE}/api/generar-nomad`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(data),

@@ -9,7 +9,9 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../public',
+    // Vercel compila con root en frontend/ y necesita el output dentro de esa carpeta (dist).
+    // Para el deploy en Render (Flask sirviendo public/) se sigue generando ../public localmente.
+    outDir: process.env.VERCEL ? 'dist' : '../public',
     emptyOutDir: true,
   },
 })

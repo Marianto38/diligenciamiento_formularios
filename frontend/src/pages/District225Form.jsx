@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../apiBase'
 
 export default function District225Form({ building, form, onBack }) {
   const [data, setData] = useState({
@@ -28,7 +29,7 @@ export default function District225Form({ building, form, onBack }) {
     setStatus({ type: 'loading', msg: 'Generando formulario…' })
 
     try {
-      const res = await fetch('/api/generar-district225', {
+      const res = await fetch(`${API_BASE}/api/generar-district225`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(data),

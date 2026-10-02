@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../apiBase'
 
 const MEMBER_DEFAULT = {
   nombre:    '',
@@ -59,7 +60,7 @@ export default function Park72Form({ building, form, onBack }) {
     setStatus({ type: 'loading', msg: 'Generando documentos…' })
 
     try {
-      const res = await fetch('/api/generar-72park', {
+      const res = await fetch(`${API_BASE}/api/generar-72park`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...data, members }),

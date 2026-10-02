@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../apiBase'
 
 const REQUIRED = ['nombre', 'unidad', 'fecha_corta', 'telefono', 'email1', 'contacto_emerg', 'tel_emerg']
 
@@ -36,7 +37,7 @@ export default function CrosbyForm({ building, form, onBack }) {
     setStatus({ type: 'loading', msg: 'Generando PDF…' })
 
     try {
-      const res = await fetch('/api/generar', {
+      const res = await fetch(`${API_BASE}/api/generar`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),

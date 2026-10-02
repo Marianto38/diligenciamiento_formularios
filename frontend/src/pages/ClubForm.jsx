@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { API_BASE } from '../apiBase'
 
 export default function ClubForm({ building, form, onBack }) {
   const [data, setData] = useState({ nombre: '', unidad: '', fecha_corta: '' })
@@ -20,7 +21,7 @@ export default function ClubForm({ building, form, onBack }) {
     setStatus({ type: 'loading', msg: 'Generando los 4 formularios…' })
 
     try {
-      const res = await fetch('/api/generar-club', {
+      const res = await fetch(`${API_BASE}/api/generar-club`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
