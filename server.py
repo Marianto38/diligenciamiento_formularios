@@ -17,6 +17,7 @@ from park72_fill import (
 from nomad_fill import llenar_pdf as llenar_nomad_pdf
 from district225_fill import llenar_pdf as llenar_district225_pdf
 from nexo_fill import llenar_pdf as llenar_nexo_pdf
+from nexo_transient_fill import llenar_pdf as llenar_nexo_transient_pdf
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -191,6 +192,30 @@ def generar_nexo():
         pdf_bytes = llenar_nexo_pdf(datos, pdf_path)
         nombre_limpio = datos['nombre'].replace(' ', '_')
         filename = f'Nexo_{datos["unidad"]}_{nombre_limpio}_filled.pdf'
+
+        return send_file(io.BytesIO(pdf_bytes), mimetype='application/pdf',
+                         as_attachment=True, download_name=filename)
+
+    except Exception as e:
+        return jsonify({'ok': False, 'error': str(e)}), 500
+
+
+@app.route('/api/generar-nexo-transient', methods=['POST'])
+def generar_nexo_transient():
+    try:
+        datos = request.get_json()
+
+        for campo in ['nombre', 'unidad', 'fecha_corta', 'telefono', 'email1', 'fecha_inicio_renta', 'tipo_gestion']:
+            if not datos.get(campo, '').strip():
+                return jsonify({'ok': False, 'error': f'Campo requerido: {campo}'}), 400
+
+        pdf_path = os.path.join(BASE_DIR, 'Nexo Residences - Transient Rental Application.pdf')
+        if not os.path.exists(pdf_path):
+            return jsonify({'ok': False, 'error': 'PDF original no encontrado en el servidor'}), 500
+
+        pdf_bytes = llenar_nexo_transient_pdf(datos, pdf_path)
+        nombre_limpio = datos['nombre'].replace(' ', '_')
+        filename = f'Nexo_Transient_{datos["unidad"]}_{nombre_limpio}_filled.pdf'
 
         return send_file(io.BytesIO(pdf_bytes), mimetype='application/pdf',
                          as_attachment=True, download_name=filename)

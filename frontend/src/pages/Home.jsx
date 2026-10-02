@@ -50,6 +50,7 @@ const BUILDINGS = [
     name: 'Nexo Residences',
     forms: [
       { id: 'orientation', label: 'Owner Orientation Packet', available: true },
+      { id: 'transient',   label: 'Transient Rental Application', available: true },
     ],
   },
 ]
